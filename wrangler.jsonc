@@ -16,8 +16,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "wandering-darkness-3a14-d1",
-      "database_id": "a4937123-6898-4168-90b7-b50b72ff3cd2"
+      "database_name": "admin-db",
+      "database_id": "06ebc492-e64d-48f2-a074-048e97f00d72"
     }
   ],
   "workflows": [
