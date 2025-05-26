@@ -1,6 +1,6 @@
 ---
 import { buttonVariants } from '@/components/ui/button';
-import { Github, LayoutDashboard } from 'lucide-react';
+import { LayoutDashboard } from 'lucide-react';
 import '@/styles/globals.css'
 
 const repoLink = 'https://github.com/cloudflare/templates/tree/main/saas-admin-template';
@@ -13,19 +13,17 @@ const repoLink = 'https://github.com/cloudflare/templates/tree/main/saas-admin-t
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>SaaS Admin Template</title>
+    <title>Pdf Json View</title>
   </head>
   <body>
     <div class="flex flex-col items-center justify-center gap-4 py-20 px-8">
-      <h1 class="text-5xl font-bold">SaaS Admin Template</h1>
-      <p class="text-xl text-muted-foreground">Manage a SaaS application - customers, subscriptions - using Cloudflare Workers and D1.</p>
+      <h1 class="text-5xl font-bold">Pdf Json View</h1>
+      <p class="text-xl text-muted-foreground">PDFファイルをJSON形式で表示・管理するためのツール</p>
       <div class="flex flex gap-4 mt-4">
         <a class={buttonVariants()} href="/admin">
-          <LayoutDashboard /> Go to admin
+          <LayoutDashboard /> 管理画面へ
         </a>
-        <a class={buttonVariants({ variant: 'outline' })} href={repoLink}>
-          <Github /> View on GitHub
-        </a>
+      </div>
     </div>
   </body>
 </html>
