@@ -5,6 +5,7 @@ import { APIDocumentation } from '@/components/admin/api-documentation';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { CustomersTable } from '@/components/admin/customers-table';
+import { SubscriptionsTable } from '@/components/admin/subscriptions-table';
 
 import { CustomerService } from '@/lib/services/customer';
 import { SubscriptionService } from '@/lib/services/subscription';
@@ -78,6 +79,11 @@ const data = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold tracking-tight">Customers</h2>
       <CustomersTable data={customers} />
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold tracking-tight">Subscriptions</h2>
+      <SubscriptionsTable data={subscriptions} />
     </section>
 
     <section class="space-y-4">
