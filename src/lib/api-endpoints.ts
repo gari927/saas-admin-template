@@ -367,60 +367,48 @@ const apiEndpoints: APIEndpoint[] = [
   },
   {
     method: "GET",
-    path: "/api/pdf_list",
-    description: "PDFファイルの一覧を取得する",
+    path: "/api/pdf_strengths",
+    description: "PDF Strengthsの全件取得",
     responses: [
       {
         name: "Response",
         example: {
-          pdfs: [
-            { id: 1, name: "sample1.pdf", size: 12345 },
-            { id: 2, name: "sample2.pdf", size: 67890 },
+          pdf_strengths: [
+            {
+              id: 1,
+              file_name: "sample1.pdf",
+              strength_1: "資質1",
+              // ...strength_2〜strength_34...
+              created_at: "2024-01-01T00:00:00.000Z",
+              updated_at: "2024-01-01T00:00:00.000Z",
+            },
           ],
         },
-        description: "PDFファイルの配列を返します",
+        description: "PDF Strengthsの配列を返します",
       },
     ],
   },
   {
-    method: "POST",
-    path: "/api/pdf_upload",
-    description: "PDFファイルをアップロードする",
+    method: "GET",
+    path: "/api/pdf_strengths/:id",
+    description: "指定IDのPDF Strengthを1件取得",
     parameters: [
-      { name: "file", type: "file", required: true, description: "アップロードするPDFファイル" },
-    ],
-    requestBody: {
-      example: {
-        file: "<バイナリデータ>"
-      },
-      description: "アップロードするPDFファイルのバイナリデータ"
-    },
-    responses: [
-      {
-        name: "Response",
-        example: {
-          message: "PDF uploaded successfully",
-          success: true,
-        },
-        description: "アップロード成功時のレスポンス"
-      },
-    ],
-  },
-  {
-    method: "DELETE",
-    path: "/api/pdf/:id",
-    description: "指定したPDFファイルを削除する",
-    parameters: [
-      { name: "id", type: "string", required: true, description: "削除するPDFのID" },
+      { name: "id", type: "string", required: true, description: "PDF StrengthのID" },
     ],
     responses: [
       {
         name: "Response",
         example: {
-          message: "PDF deleted successfully",
-          success: true,
+          pdf_strength: {
+            id: 1,
+            file_name: "sample1.pdf",
+            strength_1: "資質1",
+            // ...strength_2〜strength_34...
+            created_at: "2024-01-01T00:00:00.000Z",
+            updated_at: "2024-01-01T00:00:00.000Z",
+          },
         },
-        description: "削除成功時のレスポンス"
+        description: "PDF Strengthオブジェクトを返します",
       },
     ],
   },
