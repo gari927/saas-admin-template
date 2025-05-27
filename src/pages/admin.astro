@@ -6,20 +6,24 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { CustomersTable } from '@/components/admin/customers-table';
 import { SubscriptionsTable } from '@/components/admin/subscriptions-table';
+import { PdfStrengthsTable } from '@/components/admin/pdf-strengths-table';
 
 import { CustomerService } from '@/lib/services/customer';
 import { SubscriptionService } from '@/lib/services/subscription';
 import { CustomerSubscriptionService } from '@/lib/services/customer_subscription';
+import { PdfStrengthsService } from '@/lib/services/pdf_strengths';
 
 const { DB } = Astro.locals.runtime.env;
 
 const customerService = new CustomerService(DB);
 const subscriptionService = new SubscriptionService(DB);
 const customerSubscriptionService = new CustomerSubscriptionService(DB);
+const pdfStrengthsService = new PdfStrengthsService(DB);
 
 const customers = await customerService.getAll();
 const subscriptions = await subscriptionService.getAll();
 const customerSubscriptions = await customerSubscriptionService.getAll();
+const pdfStrengths = await pdfStrengthsService.getAll();
 
 const data = [
   {
@@ -84,6 +88,11 @@ const data = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold tracking-tight">Subscriptions</h2>
       <SubscriptionsTable data={subscriptions} />
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold tracking-tight">PDF Strengths</h2>
+      <PdfStrengthsTable data={pdfStrengths} />
     </section>
 
     <section class="space-y-4">
