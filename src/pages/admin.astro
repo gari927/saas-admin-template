@@ -24,6 +24,7 @@ const customers = await customerService.getAll();
 const subscriptions = await subscriptionService.getAll();
 const customerSubscriptions = await customerSubscriptionService.getAll();
 const pdfStrengths = await pdfStrengthsService.getAll();
+const pdfStrengthsCount = await pdfStrengthsService.count();
 
 const data = [
   {
@@ -92,6 +93,7 @@ const data = [
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold tracking-tight">PDF Strengths</h2>
+      <div class="text-sm text-muted-foreground">{pdfStrengthsCount} 件</div>
       <PdfStrengthsTable data={pdfStrengths} />
     </section>
 

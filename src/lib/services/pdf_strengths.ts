@@ -19,4 +19,13 @@ export class PdfStrengthsService {
     }
     return [];
   }
+
+  async count(): Promise<number> {
+    const query = `SELECT COUNT(*) as count FROM pdf_strengths`;
+    const response = await this.DB.prepare(query).all();
+    if (response.success && response.results.length > 0) {
+      return Number(response.results[0].count);
+    }
+    return 0;
+  }
 } 
