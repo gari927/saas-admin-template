@@ -18,7 +18,7 @@ export function PdfStrengthsTable({ data }: PdfStrengthsTableProps) {
       <table className="min-w-full text-sm">
         <thead>
           <tr>
-            <th className="px-2 py-1 border-b">ファイル名</th>
+            <th className="px-2 py-1 border-b">ID</th>
             {strengthHeaders.map((header, idx) => (
               <th key={header} className="px-2 py-1 border-b">{idx + 1}</th>
             ))}
@@ -27,7 +27,7 @@ export function PdfStrengthsTable({ data }: PdfStrengthsTableProps) {
         <tbody>
           {data.map((row) => (
             <tr key={row.id}>
-              <td className="px-2 py-1 border-b whitespace-nowrap">{row.file_name}</td>
+              <td className="px-2 py-1 border-b whitespace-nowrap">{row.id}</td>
               {strengthHeaders.map((header) => (
                 <td key={header} className="px-2 py-1 border-b whitespace-nowrap">{row[header]}</td>
               ))}
