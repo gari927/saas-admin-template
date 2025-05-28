@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PdfStrengthsService } from '@/lib/services/pdf_strengths';
+import { PdfStrengthsTable } from '@/components/admin/pdf-strengths-table';
+
+const { DB } = Astro.locals.runtime.env;
+const pdfStrengthsService = new PdfStrengthsService(DB);
+const pdfStrengths = await pdfStrengthsService.getAll();
+---
+
+<Layout title="PDF Strengths">
+  {pdfStrengths.length ? (
+    <PdfStrengthsTable data={pdfStrengths} />
+  ) : (
+    <p class="font-medium text-muted-foreground">
+      No PDF Strengths yet.
+    </p>
+  )}
+</Layout> 

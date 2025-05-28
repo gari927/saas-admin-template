@@ -1,0 +1,17 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PdfStrengthsService } from '@/lib/services/pdf_strengths';
+
+const { DB } = Astro.locals.runtime.env;
+const { id } = Astro.params;
+const pdfStrengthsService = new PdfStrengthsService(DB);
+const pdfStrength = (await pdfStrengthsService.getAll()).find((row) => String(row.id) === String(id));
+---
+
+<Layout title={`PDF Strength #${id}`}>
+  {pdfStrength ? (
+    <pre>{JSON.stringify(pdfStrength, null, 2)}</pre>
+  ) : (
+    <p>Not found</p>
+  )}
+</Layout> 

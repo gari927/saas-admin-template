@@ -28,7 +28,7 @@ export function PdfStrengthsTable({ data }: PdfStrengthsTableProps) {
           {data.map((row) => (
             <tr key={row.id}>
               <td className="px-2 py-1 border-b whitespace-nowrap">
-                <a className="text-primary underline" href={`/admin/subscriptions/${row.id}`}>{row.id}</a>
+                <a className="text-primary underline" href={`/admin/pdfs/${row.id}`}>{row.id}</a>
               </td>
               {strengthHeaders.map((header) => (
                 <td key={header} className="px-2 py-1 border-b whitespace-nowrap">{row[header]}</td>
