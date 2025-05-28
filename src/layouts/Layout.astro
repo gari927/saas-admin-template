@@ -25,7 +25,7 @@ const apiTokenSet = API_TOKEN && API_TOKEN !== '';
       <div class="mb-4">
         {!apiTokenSet && <ApiTokenMissingCard />}
       </div>
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mb-4">
         <h2 class="text-3xl font-bold tracking-tight">{title}</h2>
         <slot name="actions" />
       </div>

@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import { PdfStrengthsService } from '@/lib/services/pdf_strengths';
 import { PdfStrengthsTable } from '@/components/admin/pdf-strengths-table';
+import { CreatePdfStrengthButton } from '@/components/admin/create-pdf-strength-button';
 
 const { DB } = Astro.locals.runtime.env;
 const pdfStrengthsService = new PdfStrengthsService(DB);
@@ -16,4 +17,8 @@ const pdfStrengths = await pdfStrengthsService.getAll();
       No PDF Strengths yet.
     </p>
   )}
-</Layout> 
+</Layout>
+
+<div slot="actions">
+  <CreatePdfStrengthButton client:only="react" />
+</div> 
