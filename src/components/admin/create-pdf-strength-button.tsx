@@ -37,10 +37,29 @@ export function CreatePdfStrengthButton() {
   });
 
   async function onSubmit(values: FormValues) {
-    // TODO: PDFファイルのアップロードと解析、DB登録処理を実装
-    console.log("Submit values:", values);
-    alert("PDFアップロード処理（未実装）");
-    setOpen(false);
+    const formData = new FormData();
+    formData.append('pdfFile', values.pdfFile[0]);
+
+    try {
+      const response = await fetch('/api/pdf_strengths/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Upload successful:', result);
+        alert('PDFアップロードに成功しました！');
+        setOpen(false);
+      } else {
+        const errorData: any = await response.json();
+        console.error('Upload failed:', response.status, errorData);
+        alert(`PDFアップロードに失敗しました: ${errorData.message || response.statusText}`);
+      }
+    } catch (error) {
+      console.error('Network error during upload:', error);
+      alert('アップロード中にネットワークエラーが発生しました。');
+    }
   }
 
   return (
